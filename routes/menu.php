@@ -40,6 +40,7 @@ Route::group([
 $menuItems = MenuItem::all();
 
 foreach ($menuItems as $menuItem) {
+    if (!$menuItem->controller) continue;
     if ($menuItem->url != null) {
         $controller = $menuItem->controller ?? '\CodexShaper\Menu\Http\Controllers\MenuItemController@setRoute';
         $partials = explode('@', $menuItem->controller);
